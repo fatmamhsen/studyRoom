@@ -56,7 +56,7 @@ Widget textInputField(String text, Icon icon, bool obscure, TextInputType v) {
 Widget singleChildScroll(
   BuildContext context,
   String appbar,
-  List l, titleList , decList,
+    imgList , titleList , decList,
    String id
 ) {
   return SingleChildScrollView(
@@ -104,7 +104,7 @@ Widget singleChildScroll(
                     ),
                   ),
                   child: ListView.builder(
-                      itemCount: l.length,
+                      itemCount: imgList.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                             onTap: () {
@@ -119,7 +119,7 @@ Widget singleChildScroll(
                                       Container(
                                         width: 100.0,
                                         height: 100.0,
-                                        child: (Image.network(l[index])),
+                                        child: (Image.asset(imgList[index])),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(left: 10.0),
