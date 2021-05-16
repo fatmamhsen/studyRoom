@@ -28,13 +28,14 @@ class _HomeState extends State<Home> {
       dropDownVal1 = newVal;
     });
   }
-  
+
  NetworkHelper _nHelper =  NetworkHelper();
 
   var data;
 
-//  String ar = 'ARABIC';
-//  String en = 'ENGLISH';
+  String ar = 'ARABIC';
+  String en = 'ENGLISH';
+
 //  static String ENGLISH = 'en';
 //  static String ARABIC = 'ar';
 
