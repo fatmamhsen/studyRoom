@@ -13,19 +13,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  dynamic drobDowenVal1 = 'Transcript';
+  dynamic dropDownVal1 = 'Transcript';
   List<dynamic> l1 = ['Transcript', 'summry25', 'summry50' , 'summry75'];
-  onChamge1(dynamic newVal) {
+  onChange1(dynamic newVal) {
     setState(() {
-      drobDowenVal1 = newVal;
+      dropDownVal1 = newVal;
     });
   }
 
-  dynamic drobDowenVal2 = 'English';
+  dynamic dropDownVal2 = 'English';
   List<dynamic> l2 = ['English', 'Arabic'];
-  onChamge2(dynamic newVal) {
+  onChange2(dynamic newVal) {
     setState(() {
-      drobDowenVal2 = newVal;
+      dropDownVal2 = newVal;
     });
   }
 
@@ -93,33 +93,33 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     DropdownButton(
-                        value: drobDowenVal1,
+                        value: dropDownVal1,
                         style: TextStyle(color: Colors.grey),
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 36,
                         elevation: 8,
                         items:
-                            l1.map<DropdownMenuItem<dynamic>>((dynamic value) {
+                        l1.map<DropdownMenuItem<dynamic>>((dynamic value) {
                           return DropdownMenuItem<dynamic>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
-                        onChanged: onChamge1),
+                        onChanged: onChange1),
                     DropdownButton(
-                        value: drobDowenVal2,
+                        value: dropDownVal2,
                         style: TextStyle(color: Colors.grey),
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 36,
                         elevation: 8,
                         items:
-                            l2.map<DropdownMenuItem<dynamic>>((dynamic value) {
+                        l2.map<DropdownMenuItem<dynamic>>((dynamic value) {
                           return DropdownMenuItem<dynamic>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
-                        onChanged: onChamge2),
+                        onChanged: onChange2),
                     RaisedButton(
                       color: Colors.white,
                       elevation: 20,
