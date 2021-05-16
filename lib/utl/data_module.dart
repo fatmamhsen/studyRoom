@@ -2,7 +2,7 @@ class Data{
   final String loSignedUrl;
   final String title;
   final String language;
-  final List keywords;
+  final List   keywords;
   final String transcript;
   final String summary25;
   final String summary50;
@@ -23,6 +23,5 @@ class Data{
     );
   }
 
-
-
 }
+

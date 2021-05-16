@@ -9,14 +9,13 @@ class VideoPage extends StatefulWidget {
 
   const VideoPage({Key key, this.videoPlayerController, this.looping}) : super(key: key);
   @override
-  _VedioPageState createState() => _VedioPageState();
+  _VideoPageState createState() => _VideoPageState();
 }
 
-class _VedioPageState extends State<VideoPage> {
+class _VideoPageState extends State<VideoPage> {
   ChewieController _chewieController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //Wrapper on top of videoPlayerController
     _chewieController =ChewieController(
@@ -24,10 +23,10 @@ class _VedioPageState extends State<VideoPage> {
       aspectRatio: 16/9,
       autoInitialize: true,
         looping: widget.looping,
-      errorBuilder: (context , errorMessege){
+      errorBuilder: (context , errorMessage){
         return Center(
           child: Text(
-            errorMessege,
+            errorMessage,
             style: TextStyle(color: Colors.white),
           ),
         );
@@ -42,7 +41,6 @@ class _VedioPageState extends State<VideoPage> {
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     widget.videoPlayerController.dispose();
     _chewieController.dispose();
