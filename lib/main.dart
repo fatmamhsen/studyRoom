@@ -13,8 +13,12 @@ void main() => runApp(MaterialApp(
 initialRoute: Login.id,
 
 title: "Study Room App",
+initialRoute: Login.id,
 routes: {
   Home.id :(context)  => Home(),
+
+Home.id :(context)  => Home(),
+
   Login.id: (context) => Login(),
   MyCourse.id : (context) => MyCourse(),
   ListOfLesson.id : (context) => ListOfLesson(),

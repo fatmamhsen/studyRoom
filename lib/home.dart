@@ -25,7 +25,11 @@ class _HomeState extends State<Home> {
   List<dynamic> l2 = ['English', 'Arabic'];
   onChange2(dynamic newVal) {
     setState(() {
+
       dropDownVal1 = newVal;
+
+      dropDownVal2 = newVal;
+
     });
   }
 
@@ -106,7 +110,7 @@ class _HomeState extends State<Home> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
+                  children: <Widget>
                     Padding(
                       padding: EdgeInsets.only(left: 10.0),
                       child: DropdownButton(
@@ -141,6 +145,36 @@ class _HomeState extends State<Home> {
                           }).toList(),
                           onChanged: onChange2),
                     ),
+
+                    DropdownButton(
+                        value: dropDownVal1,
+                        style: TextStyle(color: Colors.grey),
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 36,
+                        elevation: 8,
+                        items:
+                        l1.map<DropdownMenuItem<dynamic>>((dynamic value) {
+                          return DropdownMenuItem<dynamic>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: onChange1),
+                    DropdownButton(
+                        value: dropDownVal2,
+                        style: TextStyle(color: Colors.grey),
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 36,
+                        elevation: 8,
+                        items:
+                        l2.map<DropdownMenuItem<dynamic>>((dynamic value) {
+                          return DropdownMenuItem<dynamic>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: onChange2),
+
                     RaisedButton(
                       color: Colors.blue[600],
                       elevation: 0.0,
@@ -165,4 +199,8 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+
+
+//'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 

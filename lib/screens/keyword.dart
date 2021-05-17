@@ -38,7 +38,7 @@ class _KeywordPageState extends State<KeywordPage> {
                   flex: 2,
                   child: Padding(
                     padding:
-                        EdgeInsets.symmetric(vertical: 36.0, horizontal: 24.0),
+                    EdgeInsets.symmetric(vertical: 36.0, horizontal: 24.0),
                     child: Center(
                       child: Text(
                         'Keywords',
@@ -83,13 +83,13 @@ class _KeywordPageState extends State<KeywordPage> {
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                          Text(
-                                            'Word :                   ${ data['keywords'][index]['word']}',
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold
+                                            Text(
+                                              'Word :                   ${ data['keywords'][index]['word']}',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold
+                                              ),
                                             ),
-                                          ),
                                             cardLink('Yotube Link :       ', data['keywords'][index]['youtubeLink']),
                                             cardLink('Wikipedia Link :  ', data['keywords'][index]['wikipediaLink'])
                                           ],
@@ -110,5 +110,3 @@ class _KeywordPageState extends State<KeywordPage> {
     );
   }
 }
-
-

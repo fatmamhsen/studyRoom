@@ -11,32 +11,36 @@ Widget text(String text, Color color, double size) {
   );
 }
 
+// The Row of icons under video
 Widget iconLine() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
-      iconItems(Icons.thumb_up, '21k'),
-      iconItems(Icons.thumb_down, '5'),
-      iconItems(Icons.share, 'share'),
-      iconItems(Icons.save_alt, 'save'),
+      iconItems(Icons.thumb_up, 1),
+      iconItems(Icons.thumb_down,1 ),
+//      iconItems(Icons.share, ),
+//      iconItems(Icons.save_alt, ),
     ],
   );
 }
 
-Widget iconItems(IconData icon, String def) {
+// icon under video
+Widget iconItems(IconData icon , int num) {
   return Column(
     children: [
       Container(
-        child: Icon(
-          icon,
-          color: Colors.grey[700],
+        child: IconButton(icon :  Icon(icon),
+        color: Colors.blue[600],
+        onPressed : ()=> num++ ,
         ),
+
       ),
-      text(def, Colors.grey[700], 20.0)
+      text('num', Colors.blue[600], 20.0)
     ],
   );
 }
 
+//Text field at log in page
 Widget textInputField(String text, Icon icon, bool obscure, TextInputType v) {
   return TextField(
     decoration: InputDecoration(
@@ -52,6 +56,7 @@ Widget textInputField(String text, Icon icon, bool obscure, TextInputType v) {
     keyboardType: v,
   );
 }
+
 // body of List of courses , lessons , object pages
 Widget singleChildScroll(
   BuildContext context,
@@ -171,3 +176,8 @@ Widget cardLink(
                 }),
         ]));
 }
+
+
+
+
+
