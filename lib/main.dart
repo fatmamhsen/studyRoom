@@ -8,10 +8,17 @@ import 'package:study_room/VedioPage.dart';
 import 'package:study_room/screens/login.dart';
 
 void main() => runApp(MaterialApp(
+  debugShowCheckedModeBanner: false,
+
+initialRoute: Login.id,
+
 title: "Study Room App",
 initialRoute: Login.id,
 routes: {
+  Home.id :(context)  => Home(),
+
 Home.id :(context)  => Home(),
+
   Login.id: (context) => Login(),
   MyCourse.id : (context) => MyCourse(),
   ListOfLesson.id : (context) => ListOfLesson(),

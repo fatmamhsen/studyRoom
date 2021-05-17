@@ -12,6 +12,8 @@ class KeywordPage extends StatefulWidget {
 class _KeywordPageState extends State<KeywordPage> {
   NetworkHelper _nHelper = NetworkHelper();
   var data;
+  //static String ENGLISH = 'en';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +66,7 @@ class _KeywordPageState extends State<KeywordPage> {
                           future: _nHelper.fetchData(),
                           builder: (_, snapshot) {
                             if (snapshot.hasData) {
-                              data = snapshot.data;
+                               data = snapshot.data;
                               return ListView.builder(
                                   itemCount: data['keywords'].length,
                                   itemBuilder: (context, index) {
@@ -96,8 +98,10 @@ class _KeywordPageState extends State<KeywordPage> {
                                       ),
                                     );
                                   });
+                            } else if(snapshot.hasError){
+                              return Text("${snapshot.error}");
                             }
-                            return Text("${snapshot.error}");
+                            return Center(child: CircularProgressIndicator());
                           },
                         )))
               ]),
