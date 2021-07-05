@@ -88,7 +88,7 @@ class _VideoPageState extends State<VideoPage> {
                         padding: EdgeInsets.only(top: 20.0),
                         child: ListTile(
                           title: text(
-                              data.title, Colors.black, 20.0, FontWeight.bold),
+                              data.title, Colors.black, 20.0,FontWeight.bold),
                         ),
                       );
                     } else if (snapshot.hasError) {
