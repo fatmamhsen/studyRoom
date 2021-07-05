@@ -1,18 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:study_room/widget.dart';
+import 'package:study_room/utl/vedio_module.dart' as v;
 import 'package:study_room/utl/network.dart';
 
 class KeywordPage extends StatefulWidget {
-  static String id = "KeywordScreen";
+  static String id = "KeywordPage";
+  final loId;
+  KeywordPage({this.loId});
   @override
   _KeywordPageState createState() => _KeywordPageState();
 }
 
 class _KeywordPageState extends State<KeywordPage> {
-  NetworkHelper _nHelper = NetworkHelper();
   var data;
-  //static String ENGLISH = 'en';
+  Future<v.Video> futureData;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    futureData = fetchData(widget.loId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,7 @@ class _KeywordPageState extends State<KeywordPage> {
           ),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue[800], Colors.blue[600]],
+              colors: [Colors.blue, Colors.blueAccent],
               begin: Alignment.topLeft,
               end: Alignment.topRight,
             ),
@@ -38,7 +45,7 @@ class _KeywordPageState extends State<KeywordPage> {
                   flex: 2,
                   child: Padding(
                     padding:
-                    EdgeInsets.symmetric(vertical: 36.0, horizontal: 24.0),
+                        EdgeInsets.symmetric(vertical: 36.0, horizontal: 24.0),
                     child: Center(
                       child: Text(
                         'Keywords',
@@ -63,42 +70,60 @@ class _KeywordPageState extends State<KeywordPage> {
                           ),
                         ),
                         child: FutureBuilder(
-                          future: _nHelper.fetchData(),
+                          future: futureData,
                           builder: (_, snapshot) {
                             if (snapshot.hasData) {
-                               data = snapshot.data;
+                              data = snapshot.data;
                               return ListView.builder(
-                                  itemCount: data['keywords'].length,
+                                  itemCount: data.keywords.length,
                                   itemBuilder: (context, index) {
                                     return Container(
                                       width: 100,
-                                      height: 100,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(40.0),
+                                          topRight: Radius.circular(40.0),
+                                        ),
+                                      ),
                                       child: Card(
                                         margin: EdgeInsets.all(10.0),
                                         elevation: 5,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Word :                   ${ data['keywords'][index]['word']}',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 20.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Word:                 ${data.keywords[index].word}',
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold),
                                               ),
-                                            ),
-                                            cardLink('Yotube Link :       ', data['keywords'][index]['youtubeLink']),
-                                            cardLink('Wikipedia Link :  ', data['keywords'][index]['wikipediaLink'])
-                                          ],
-
+                                              cardLink(
+                                                  'Yotube Link :       ',
+                                                  data.keywords[index]
+                                                          .youtubeLink ??
+                                                      'No Link'),
+                                              cardLink(
+                                                  'Wikipedia Link :  ',
+                                                  data.keywords[index]
+                                                          .wikipediaLink ??
+                                                      'No Link')
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );
                                   });
-                            } else if(snapshot.hasError){
+                            } else if (snapshot.hasError) {
                               return Text("${snapshot.error}");
                             }
                             return Center(child: CircularProgressIndicator());

@@ -4,43 +4,40 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 
 
-Widget text(String text, Color color, double size) {
+Widget text(String text, Color color, double size, FontWeight fontWeight) {
   return Text(
     '$text',
-    style: TextStyle(color: color, fontSize: size),
+    style: TextStyle(color: color, fontSize: size ),
   );
 }
 
-// The Row of icons under video
 Widget iconLine() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      iconItems(Icons.thumb_up, 1),
-      iconItems(Icons.thumb_down,1 ),
-//      iconItems(Icons.share, ),
-//      iconItems(Icons.save_alt, ),
-    ],
+  return Padding(
+    padding: EdgeInsets.only(bottom: 20.0 ,top: 20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            iconItems(Icons.thumb_up, '21k'),
+            iconItems(Icons.thumb_down, '5'),
+          ],
+        ),
   );
 }
 
-// icon under video
-Widget iconItems(IconData icon , int num) {
+Widget iconItems(IconData icon, String def) {
   return Column(
     children: [
       Container(
-        child: IconButton(icon :  Icon(icon),
-        color: Colors.blue[600],
-        onPressed : ()=> num++ ,
+        child: Icon(
+          icon,
+          color: Colors.grey[700],
         ),
-
       ),
-      text('num', Colors.blue[600], 20.0)
+      text(def, Colors.grey[700], 20.0 ,FontWeight.w100)
     ],
   );
 }
 
-//Text field at log in page
 Widget textInputField(String text, Icon icon, bool obscure, TextInputType v) {
   return TextField(
     decoration: InputDecoration(
@@ -56,14 +53,15 @@ Widget textInputField(String text, Icon icon, bool obscure, TextInputType v) {
     keyboardType: v,
   );
 }
-
 // body of List of courses , lessons , object pages
 Widget singleChildScroll(
   BuildContext context,
-  String appbar,
-    imgList , titleList , decList,
-   String id
-) {
+    String appbar,
+    String id,
+    child,
+)
+{
+
   return SingleChildScrollView(
     child: Container(
       constraints: BoxConstraints(
@@ -108,39 +106,8 @@ Widget singleChildScroll(
                       topRight: Radius.circular(40.0),
                     ),
                   ),
-                  child: ListView.builder(
-                      itemCount: imgList.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(id);
-                            },
-                            // Card Which Holds Layout Of ListView Item
-                            child: Card(
-                                margin: EdgeInsets.all(10.0),
-                                child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 100.0,
-                                        height: 100.0,
-                                        child: (Image.asset(imgList[index])),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 10.0),
-                                      ),
-                                      Expanded(
-                                          child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Text(titleList[index],
-                                                    style: TextStyle(
-                                                        fontWeight: FontWeight.bold)),
-                                                Text(decList[index]),
-                                              ]))
-                                    ])));
-                      }),
-                ))
+                  child: child,
+                ),),
           ]),
     ),
   );
@@ -176,8 +143,3 @@ Widget cardLink(
                 }),
         ]));
 }
-
-
-
-
-

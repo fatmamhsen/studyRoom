@@ -1,4 +1,3 @@
-
 class Data{
   final String loSignedUrl;
   final String title;
@@ -11,7 +10,7 @@ class Data{
 
   Data({this.loSignedUrl, this.title, this.language, this.keywords, this.transcript, this.summary25, this.summary50, this.summary75});
 
-   factory Data.fromJson(Map<dynamic, dynamic> json) {
+   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       loSignedUrl: json['loSignedUrl'],
       title: json['title'],
@@ -23,8 +22,6 @@ class Data{
       summary75: json['summary75'],
     );
   }
-
-}
 
 }
 
