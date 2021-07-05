@@ -17,7 +17,6 @@ class _MyCourseState extends State<MyCourse> {
   void initState() {
     super.initState();
     futureCourses = fetchCourses();
-
   }
   var data;
   @override

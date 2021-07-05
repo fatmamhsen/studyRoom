@@ -2,7 +2,6 @@ import 'dart:convert';
 
 List<Course> coursesFromJson(String str) => List<Course>.from(json.decode(str).map((x) => Course.fromJson(x)));
 
-
 class Course {
   Course({
     this.courseCode,

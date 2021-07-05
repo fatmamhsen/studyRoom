@@ -2,7 +2,6 @@ import 'dart:convert';
 
 Video videoFromJson(String str) => Video.fromJson(json.decode(str));
 
-
 class Video {
   Video({
     this.loSignedUrl,

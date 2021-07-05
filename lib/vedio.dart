@@ -54,5 +54,3 @@ class _VideoState extends State<Video> {
     _chewieController.dispose();
   }
 }
-
-

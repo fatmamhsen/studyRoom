@@ -22,6 +22,5 @@ class Data{
       summary75: json['summary75'],
     );
   }
-
 }
 

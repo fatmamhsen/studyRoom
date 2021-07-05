@@ -33,7 +33,6 @@ class _VideoPageState extends State<VideoPage> {
       dropDownVal2 = newVal;
     });
   }
-
   var data;
   Future<v.Video> futureData;
   @override

@@ -11,7 +11,7 @@ Widget text(String text, Color color, double size, FontWeight fontWeight) {
   );
 }
 
-Widget iconLine() {
+Widget iconLine(){
   return Padding(
     padding: EdgeInsets.only(bottom: 20.0 ,top: 20.0),
         child: Row(

@@ -34,6 +34,7 @@ Future <List<Course>> fetchCourses() async {
     throw Exception('Unexpected error occured!');
   }
 }
+
 //call Lessons
 Future<List<Lesson>> fetchCourseLessons(String courseCode) async{
   final response = await http.get(Uri.parse('$url2/$courseCode/0/lessons'));

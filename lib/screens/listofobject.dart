@@ -44,6 +44,7 @@ class _ListOfObjectState extends State<ListOfObject> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context)=>VideoPage(loId: e.lOid,)));
                           },
+
                           child: Expanded(
                             child: Container(
                               width: double.infinity,
